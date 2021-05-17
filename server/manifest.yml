@@ -1,11 +1,11 @@
   applications:
-  - name: dealerreiew
+  - name: reviewdealers
     routes:
-      - route: host.domain
+      - route: cf-p10.eu-gb.cf.appdomain.cloud
     memory: 128M
     buildpack: python_buildpack
-  - name: dealerreiew-nginx
+  - name: reviewdealers-nginx
     routes:
-      - route: host.domain/static
+      - route: cf-p10.eu-gb.cf.appdomain.cloud/static
     memory: 128M
     buildpack: staticfile_buildpack
