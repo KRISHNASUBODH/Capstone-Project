@@ -1,10 +1,10 @@
   applications:
-  - name: reviewdealers
+  - name: review_dealers
     routes:
       - route: cf-p10.eu-gb.cf.appdomain.cloud
     memory: 128M
     buildpack: python_buildpack
-  - name: reviewdealers-nginx
+  - name: review_dealers-nginx
     routes:
       - route: cf-p10.eu-gb.cf.appdomain.cloud/static
     memory: 128M
