@@ -46,14 +46,14 @@ class CarModel(models.Model):
         (WAGON, 'WAGON')
     ]
     model_type = models.CharField(null=False, max_length=20, choices=TYPE_CHOICES, default=WAGON)
-    year = models.DateField(null=True)
+    year = models.DateField(null=False)
     make = models.ForeignKey(CarMake, null=False, on_delete=models.CASCADE)
     #make = models.ManyToManyField(CarMake)
 
     def __str__(self):
         return "Model: " + self.model_name + "," + \
-            "Type: " + self.model_type + "," + \
-                "Year: " + self.year
+            "Type: " + self.model_type
+                
 
 
 
