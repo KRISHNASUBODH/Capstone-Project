@@ -18,12 +18,12 @@ import uuid
 # - Any other fields you would like to include in car make model
 # - __str__ method to print a car make object
 class CarMake(models.Model):
-    name = models.CharField(null=False, max_length=20, default='car_make')
-    description = models.CharField(max_length=1000)
+    make_name = models.CharField(null=False, max_length=20)
+    make_description = models.CharField(max_length=1000)
 
     def __str__(self):
-        return "Make: " + self.name + "," + \
-             "Description: " + self.description
+        return "Make: " + self.make_name + "," + \
+             "Description: " + self.make_description
 
 
 # <HINT> Create a Car Model model `class CarModel(models.Model):`:
@@ -36,7 +36,7 @@ class CarMake(models.Model):
 # - __str__ method to print a car model object
 class CarModel(models.Model):
     model_name = models.CharField(null=False, max_length=20)
-    dealer_id = models.IntegerField(default=0)
+    dealer_id = models.IntegerField(primary_key=True, null=False)
     SEDAN = 'sedan'
     SUV = 'suv'
     WAGON = 'wagon'
