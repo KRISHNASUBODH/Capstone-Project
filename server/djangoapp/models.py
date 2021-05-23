@@ -18,6 +18,7 @@ import uuid
 # - Any other fields you would like to include in car make model
 # - __str__ method to print a car make object
 class CarMake(models.Model):
+    id_make = models.CharField(max_length=20, primary_key=True)
     make_name = models.CharField(null=False, max_length=20)
     make_description = models.CharField(max_length=1000)
 
@@ -35,8 +36,11 @@ class CarMake(models.Model):
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car model object
 class CarModel(models.Model):
+    model_id = models.CharField(max_length=20, primary_key=True)
     model_name = models.CharField(null=False, max_length=20)
-    dealer_id = models.IntegerField(primary_key=True, null=False)
+    # Dealer id - refers to id field of dealerships in cloudant
+    id = models.IntegerField(null=False, blank=False)
+    
     SEDAN = 'sedan'
     SUV = 'suv'
     WAGON = 'wagon'
@@ -47,7 +51,7 @@ class CarModel(models.Model):
     ]
     model_type = models.CharField(null=False, max_length=20, choices=TYPE_CHOICES, default=WAGON)
     year = models.DateField(null=False)
-    make = models.ForeignKey(CarMake, null=False, on_delete=models.CASCADE)
+    carmake = models.ForeignKey(CarMake, null=False, on_delete=models.CASCADE)
     #make = models.ManyToManyField(CarMake)
 
     def __str__(self):
@@ -56,7 +60,7 @@ class CarModel(models.Model):
                 
 # <HINT> Create a plain Python class `CarDealer` to hold dealer data
 class CarDealer:
-    def __init__(self, id, city, state, st, address, zip, lat, long, short_name, full_name):
+    def __init__(self, id2, city, state, st, address, zip, lat, long, short_name, full_name):
         # Dealer id
         self.id = id
         # Dealer city
@@ -78,9 +82,6 @@ class CarDealer:
         # Dealer Full Name
         self.full_name = full_name
         
-        
-        
-
     def __str__(self):
         return "Dealer name: " + self.full_name
 
