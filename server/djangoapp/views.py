@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import CarMake, CarModel
-from .restapis import get_request, get_dealers_from_cf
+from .restapis import get_request, get_dealers_from_cf, get_dealer_by_id_from_cf, get_dealer_by_state_from_cf, get_dealer_reviews_from_cf 
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -100,7 +100,7 @@ def get_dealerships(request):
         # Get dealers from the URL
         dealerships = get_dealers_from_cf(url)
         # Concat all dealer's short name
-        dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
+        dealer_names = ',   '.join([dealer.short_name for dealer in dealerships])
         # Return a list of dealer short name
         return HttpResponse(dealer_names)
 
