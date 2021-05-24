@@ -135,21 +135,22 @@ def get_dealer_reviews_from_cf(url, **kwargs):
     json_result = get_request(url, dealerId=dealer_id)   
     if json_result:
         # Get the row list in JSON as dealers
-        reviews = json_result["doc"]["reviews"]
+        reviews_details = json_result["doc"]["reviews"]
         # For each dealer object
-        for review in reviews:
+        for re-view in reviews_details:
             # Get its content in `doc` object           
         #    dealer_doc = dealer["doc"]            
                        
-            review_obj = DealerReview( dealership=review["dealership"], name=dealer_doc["name"],
-                purchase=dealer_doc["purchase"], review=dealer_doc["review"], 
-                purchase_date=dealer_doc["purchase_date"], car_make=dealer_doc["car_make"], 
-                car_model=dealer_doc["car_model"], car_year=dealer_doc["car_year"],
-                sentiment=dealer_doc["sentiment"], id=dealer_doc["id"] 
+            review_obj = DealerReview( dealership=re-view["dealership"], name=re-view["name"],
+                purchase=re-view["purchase"], review=re-view["review"], 
+                purchase_date=re-view["purchase_date"], car_make=re-view["car_make"], 
+                car_model=re-view["car_model"], car_year=re-view["car_year"],
+                sentiment=re-view["sentiment"], id=re-view["id"] 
             )    
             results.append(dealer_obj)
     
     return results
+
 
 
 

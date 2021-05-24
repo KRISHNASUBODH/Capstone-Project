@@ -100,4 +100,4 @@ class DealerReview:
         self.id = id
 
     def __str__(self):
-        return "Dealer review: " + self.sentiment
+        return "Dealer review: " + self.review
