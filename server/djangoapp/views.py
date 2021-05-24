@@ -107,10 +107,10 @@ def get_dealerships(request):
 
 # Create a `get_dealer_details` view to render the reviews of a dealer
 def get_dealer_details(request, dealer_id):
-    context = {}
+    context = []
     if request.method == "GET":
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
-        url = " "
+        url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-get/get-reviews-seq"
         # Get dealers from the URL
         reviews = get_dealer_reviews_from_cf(url)
         # Concat all dealer's short name
