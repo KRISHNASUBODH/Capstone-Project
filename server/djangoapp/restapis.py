@@ -131,23 +131,26 @@ def get_dealer_by_state_from_cf(url, state):
 # Create a get_dealer_reviews_from_cf method to get reviews by dealer id from a cloud function
 def get_dealer_reviews_from_cf(url, **kwargs):
     results = []
+    dealer_id = 1
     # Call get_request with a URL parameter
-    json_result = get_request(url, dealerId=dealer_id)   
+    json_result = get_request(url, dealerId=dealer_id)
+#    json_result = get_request(url, dealerId=dealer_id)   
     if json_result:
         # Get the row list in JSON as dealers
         reviews_details = json_result["doc"]["reviews"]
         # For each dealer object
-        for re-view in reviews_details:
+        for reviewed in reviews_details:
             # Get its content in `doc` object           
         #    dealer_doc = dealer["doc"]            
                        
-            review_obj = DealerReview( dealership=re-view["dealership"], name=re-view["name"],
-                purchase=re-view["purchase"], review=re-view["review"], 
-                purchase_date=re-view["purchase_date"], car_make=re-view["car_make"], 
-                car_model=re-view["car_model"], car_year=re-view["car_year"],
-                sentiment=re-view["sentiment"], id=re-view["id"] 
+            review_obj = DealerReview( dealership=reviewed["dealership"], name=reviewed["name"],
+                purchase=reviewed["purchase"], review=reviewed["review"], 
+                purchase_date=reviewed["purchase_date"], car_make=reviewed["car_make"], 
+                car_model=reviewed["car_model"], car_year=reviewed["car_year"],
+            #    sentiment=reviewed["sentiment"], 
+                id=reviewed["id"] 
             )    
-            results.append(dealer_obj)
+            results.append(review_obj)
     
     return results
 
