@@ -105,14 +105,14 @@ def get_dealerships(request):
         return HttpResponse(dealer_names)
 
 # Create a `get_dealer_details` view to render the reviews of a dealer
-def get_dealer_details(request):
-#def get_dealer_details(request, dealer_id):
+#def get_dealer_details(request):
+def get_dealer_details(request, dealer_id):
 #    context = []
     if request.method == "GET":
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-get/get-reviews-seq"
         # Get dealers from the URL
-        review_objects = get_dealer_reviews_from_cf(url)
+        review_objects = get_dealer_reviews_from_cf(url, dealerId=1)
         # Concat all dealer's short name
     #    dealer_reviews = context.append(review_objects)
         dealer_reviews = '<br><br>'.join([rev_obj.review for rev_obj in review_objects])
