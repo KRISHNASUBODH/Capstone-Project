@@ -147,15 +147,15 @@ def get_dealer_reviews_from_cf(url, dealer_id):
         for reviewed in reviews_details:
             # Get its content in `doc` object           
         #    dealer_doc = dealer["doc"]            
-                       
-            review_obj = DealerReview( dealership=reviewed["dealership"], name=reviewed["name"],
-                purchase=reviewed["purchase"], review=reviewed["review"], 
-                purchase_date=reviewed["purchase_date"], car_make=reviewed["car_make"], 
-                car_model=reviewed["car_model"], car_year=reviewed["car_year"],
-            #    sentiment=reviewed["sentiment"], 
-                id=reviewed["id"] 
-            )    
-            results.append(review_obj)
+            if reviewed["id"] == dealer_id:           
+                review_obj = DealerReview( dealership=reviewed["dealership"], name=reviewed["name"],
+                    purchase=reviewed["purchase"], review=reviewed["review"], 
+                    purchase_date=reviewed["purchase_date"], car_make=reviewed["car_make"], 
+                    car_model=reviewed["car_model"], car_year=reviewed["car_year"],
+                #    sentiment=reviewed["sentiment"], 
+                    id=reviewed["id"] 
+                )    
+                results.append(review_obj)
     
     return results
 
