@@ -6,12 +6,15 @@ from requests.auth import HTTPBasicAuth
 # Create a `get_request` to make HTTP GET requests
 # e.g., response = requests.get(url, params=params, headers={'Content-Type': 'application/json'},
 #                                     auth=HTTPBasicAuth('apikey', api_key))
+# def get_request(url, **kwargs):
 def get_request(url, **kwargs):
     print(kwargs)
+    #print(dealer_id)
     print("GET from {} ".format(url))
     try:
         # Call get method of requests library with URL and parameters
         response = requests.get(url, headers={'Content-Type': 'application/json'}, params=kwargs)
+        #response = requests.get(url, headers={'Content-Type': 'application/json'}, params=dealer_id)
     except:
         # If any error occurs
         print("Network exception occurred")
@@ -129,12 +132,12 @@ def get_dealer_by_state_from_cf(url, state):
     return results
 
 # Create a get_dealer_reviews_from_cf method to get reviews by dealer id from a cloud function
-def get_dealer_reviews_from_cf(url, **kwargs):
+def get_dealer_reviews_from_cf(url, dealer_id):
     results = []
 #    dealer_id = 1  -- use above method with dealer_by_id
     # Call get_request with a URL parameter
 #    json_result = get_request(url)
-    json_result = get_request(url, dealerId=dealer_id)   
+    json_result = get_request(url, dealer_id)   
     if json_result:
         # Get the row list in JSON as dealers
         reviews_details = json_result["rows"][0]["doc"]["reviews"]

@@ -24,10 +24,10 @@ urlpatterns = [
     # path for logout
     path('logout/', views.logout_request, name='logout'),
     # path for dealerships
-  #  path(route='', view=views.get_dealerships, name='index'),
+    path(route='', view=views.get_dealerships, name='index'),
   
-    # path for all-dealers reviews view
-    path(route='dealer_reviews/', view=views.get_dealer_details, name='dealer_reviews'),
+    # path for all-dealers reviews view - working ok
+    #path(route='dealer_reviews/', view=views.get_dealer_details, name='dealer_reviews'),
     # path for a selected (id) dealer review view
     path('dealer/<int:dealer_id>/', views.get_dealer_details, name='dealer_details'),
 
