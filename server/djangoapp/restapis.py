@@ -13,9 +13,10 @@ def get_request(url, **kwargs):
     print("GET from {} ".format(url))
     try:
         # Call get method of requests library with URL and parameters
-        
-        response = requests.get(url, params=params, headers={'Content-Type': 'application/json'}, auth=HTTPBasicAuth('apikey', api_key))
-        #response = requests.get(url, headers={'Content-Type': 'application/json'}, params=dealer_id)
+        if api_key:
+            response = requests.get(url, params=params, headers={'Content-Type': 'application/json'}, auth=HTTPBasicAuth('apikey', api_key))
+        else:
+            response = requests.get(url, headers={'Content-Type': 'application/json'}, params=dealer_id)
     except:
         # If any error occurs
         print("Network exception occurred")
