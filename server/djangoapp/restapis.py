@@ -154,7 +154,8 @@ def get_dealer_reviews_from_cf(url, dealer_id):
                     car_model=reviewed["car_model"], car_year=reviewed["car_year"],
                 #    sentiment=reviewed["sentiment"], 
                     id=reviewed["id"] 
-                )    
+                )
+                review_obj.sentiment = analyze_review_sentiments(review_obj.review)    
                 results.append(review_obj)
     
     return results
