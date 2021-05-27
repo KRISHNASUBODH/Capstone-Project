@@ -7,16 +7,13 @@ from requests.auth import HTTPBasicAuth
 # e.g., response = requests.get(url, params=params, headers={'Content-Type': 'application/json'},
 #                                     auth=HTTPBasicAuth('apikey', api_key))
 # def get_request(url, **kwargs):
-def get_request(url, **kwargs):
+def get_request_dealers(url, **kwargs):
     print(kwargs)
     #print(dealer_id)
     print("GET from {} ".format(url))
     try:
         # Call get method of requests library with URL and parameters
-        if api_key:
-            response = requests.get(url, params=params, headers={'Content-Type': 'application/json'}, auth=HTTPBasicAuth('apikey', api_key))
-        else:
-            response = requests.get(url, headers={'Content-Type': 'application/json'}, params=dealer_id)
+        response = requests.get(url, headers={'Content-Type': 'application/json'}, params=kwargs)                            
     except:
         # If any error occurs
         print("Network exception occurred")
@@ -26,6 +23,39 @@ def get_request(url, **kwargs):
     return json_data
   #  return json_data.dealerships  - not working
   #  return json_data["dealerships"]  - not working
+
+def get_request_reviews(url, **kwargs):
+    print(kwargs)
+    #print(dealer_id)
+    print("GET from {} ".format(url))
+    try:        
+        response = requests.get(url, headers={'Content-Type': 'application/json'}, params=dealer_id)
+    except:
+        # If any error occurs
+        print("Network exception occurred")
+    status_code = response.status_code
+    print("With status {} ".format(status_code))
+    json_data = json.loads(response.text)
+    return json_data
+
+
+def get_request_sentiments(url, **kwargs):
+    print(kwargs)
+    #print(dealer_id)
+    print("GET from {} ".format(url))
+    try:
+        response = requests.get(url, params=params, headers={'Content-Type': 'application/json'}, auth=HTTPBasicAuth('apikey', api_key))        
+    except:
+        # If any error occurs
+        print("Network exception occurred")
+    
+    status_code = response.status_code
+    print("With status {} ".format(status_code))
+    json_data = json.loads(response.text)
+    return json_data
+
+
+
 
 # Create a `post_request` to make HTTP POST requests
 # e.g., response = requests.post(url, params=kwargs, json=payload)
