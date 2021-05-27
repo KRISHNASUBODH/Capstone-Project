@@ -132,9 +132,17 @@ def add_review(request, dealer_id):
     if request.user.is_authenticated:
         
         review = {}
+        review['id'] = 
+        review['name'] = 
+        review['dealership'] = 11
+        review['review'] = "This is a great car dealer"
+        review['purchase'] = 
+        review['another'] = 
+        review['purchase_date'] = 
+        review['car_make'] = 
+        review['car_model'] = 
+        review['car_year'] = 
         review["time"] = datetime.utcnow().isoformat()
-        review["dealership"] = 11
-        review["review"] = "This is a great car dealer"
         
         if request.method == "POST":
             url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-save/save-review-seq"
