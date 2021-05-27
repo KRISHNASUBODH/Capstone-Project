@@ -56,6 +56,21 @@ def get_request_sentiments(url, **kwargs):
 
 # Create a `post_request` to make HTTP POST requests
 # e.g., response = requests.post(url, params=kwargs, json=payload)
+def post_request(url, json_payload, **kwargs):
+    print(kwargs)
+    #print(dealer_id)
+    print("POST from {} ".format(url))
+    try:
+        response = requests.post(url, params=kwargs, json=json_payload)        
+    except:
+        # If any error occurs
+        print("Network exception occurred")
+    
+    status_code = response.status_code
+    print("With status {} ".format(status_code))
+    
+
+
 
 
 # Create a get_dealers_from_cf method to get dealers from a cloud function
@@ -204,7 +219,7 @@ def analyze_review_sentiments(text, **kwargs):
     params["features"] = kwargs["features"]
     params["return_analyzed_text"] = kwargs["return_analyzed_text"]
     
-    api_key = "rxHnYUlpnovZJKm0DG7h6tK0F9UVvUl1gGjWbBx__bqF"
+    api_key = ""
     url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/871f35fd-6629-4ee8-9c4f-b25283de3e68"
     
     json_result = get_request_sentiments(url, params=params, apikey=api_key)

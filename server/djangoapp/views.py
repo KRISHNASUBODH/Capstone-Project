@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import CarMake, CarModel
-from .restapis import get_request_dealers, get_request_reviews, get_request_sentiments
+from .restapis import get_request_dealers, get_request_reviews, get_request_sentiments, post_request
 from .restapis import get_dealers_from_cf, get_dealer_by_id_from_cf, get_dealer_by_state_from_cf, get_dealer_reviews_from_cf 
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -127,6 +127,20 @@ def get_dealer_details(request, dealer_id):
 
 
 # Create a `add_review` view to submit a review
-# def add_review(request, dealer_id):
-# ...
+def add_review(request, dealer_id):
+    # First check if user is authenticated because only authenticated users can post reviews for a dealer.
+    if request.user.is_authenticated:
+        
+        review = {}
+        review["time"] = datetime.utcnow().isoformat()
+        review["dealership"] = 11
+        review["review"] = "This is a great car dealer"
+        
+        if request.method == "POST":
+            url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-save/save-review-seq"
+            json_payload["review"] = review
+            result = post_request(url, json_payload, dealerId=dealer_id)
+            return HttpResponse(result)
+
+
 
