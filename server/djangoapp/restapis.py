@@ -181,9 +181,11 @@ def get_dealer_reviews_from_cf(url, dealer_id):
                     purchase=reviewed["purchase"], review=reviewed["review"], 
                     purchase_date=reviewed["purchase_date"], car_make=reviewed["car_make"], 
                     car_model=reviewed["car_model"], car_year=reviewed["car_year"],
+                # sentiment="" is ok, giving review for any one dealer
                     sentiment="", 
                     id=reviewed["id"] 
                 )
+            # Adding sentiment - NOT WORKING - may BYPASS
             #    review_obj.sentiment = analyze_review_sentiments(review_obj.review)    
                 results.append(review_obj)
     
@@ -195,7 +197,7 @@ def get_dealer_reviews_from_cf(url, dealer_id):
 # Create an `analyze_review_sentiments` method to call Watson NLU and analyze text
 # - Call get_request() with specified arguments
 # - Get the returned sentiment label such as Positive or Negative
-def analyze_review_sentiments(dealerreview):
+def analyze_review_sentiments(text, **kwargs):
     params = dict()
     params["text"] = kwargs["text"]
     params["version"] = kwargs["version"]
@@ -206,7 +208,7 @@ def analyze_review_sentiments(dealerreview):
     url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/871f35fd-6629-4ee8-9c4f-b25283de3e68"
     
     json_result = get_request_sentiments(url, params=params, apikey=api_key)
-    return json_result
+    return json.loads(json_result)
 #    response = requests.get(url, params=params, headers={'Content-Type': 'application/json'},
 #                                    auth=HTTPBasicAuth('apikey', api_key))
 
