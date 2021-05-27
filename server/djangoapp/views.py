@@ -132,16 +132,16 @@ def add_review(request, dealer_id):
     if request.user.is_authenticated:
         
         review = {}
-        review['id'] = 
-        review['name'] = 
+        review['id'] = 5
+        review['name'] = 'Ram Sahare'
         review['dealership'] = 11
         review['review'] = "This is a great car dealer"
-        review['purchase'] = 
-        review['another'] = 
-        review['purchase_date'] = 
-        review['car_make'] = 
-        review['car_model'] = 
-        review['car_year'] = 
+        review['purchase'] = "yes"
+        review['another'] = "field"
+        review['purchase_date'] = '2018-05-05'
+        review['car_make'] = 'Rolls Royce'
+        review['car_model'] = 'Beauty'
+        review['car_year'] = '2018'
         review["time"] = datetime.utcnow().isoformat()
         
         if request.method == "POST":
