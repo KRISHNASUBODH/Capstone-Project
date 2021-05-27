@@ -38,7 +38,6 @@ def get_request_reviews(url, **kwargs):
     json_data = json.loads(response.text)
     return json_data
 
-
 def get_request_sentiments(url, **kwargs):
     print(kwargs)
     #print(dealer_id)
@@ -182,10 +181,10 @@ def get_dealer_reviews_from_cf(url, dealer_id):
                     purchase=reviewed["purchase"], review=reviewed["review"], 
                     purchase_date=reviewed["purchase_date"], car_make=reviewed["car_make"], 
                     car_model=reviewed["car_model"], car_year=reviewed["car_year"],
-                #    sentiment=reviewed["sentiment"], 
+                    sentiment="", 
                     id=reviewed["id"] 
                 )
-        #        review_obj.sentiment = analyze_review_sentiments(review_obj.review)    
+            #    review_obj.sentiment = analyze_review_sentiments(review_obj.review)    
                 results.append(review_obj)
     
     return results
@@ -203,7 +202,7 @@ def analyze_review_sentiments(dealerreview):
     params["features"] = kwargs["features"]
     params["return_analyzed_text"] = kwargs["return_analyzed_text"]
     
-    api_key = ""
+    api_key = "rxHnYUlpnovZJKm0DG7h6tK0F9UVvUl1gGjWbBx__bqF"
     url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/871f35fd-6629-4ee8-9c4f-b25283de3e68"
     
     json_result = get_request_sentiments(url, params=params, apikey=api_key)
