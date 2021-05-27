@@ -175,7 +175,7 @@ def analyze_review_sentiments(dealerreview):
     params["features"] = kwargs["features"]
     params["return_analyzed_text"] = kwargs["return_analyzed_text"]
     
-    api_key = "T31tHLHg7IQFB2DGH4VOtjJgwJhVVkwvToB920aMS1mi"
+    api_key = ""
     url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/871f35fd-6629-4ee8-9c4f-b25283de3e68"
     
     json_result = get_request(url, params=params, apikey=api_key)
