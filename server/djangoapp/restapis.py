@@ -111,14 +111,21 @@ def get_dealers_from_cf(url, **kwargs):
 # method to get dealers in tabular form
 def get_dealers_from_cf2(url, **kwargs):
     dealers_dict = {}
+    dealers_dict2 = {}
     # Call get_request with a URL parameter
     json_result = get_request_dealers(url)   
     if json_result:
         # Get the row list in JSON as dealers
      #   dealers = json_result["rows"][0]["doc"]["dealerships"]
-        dealers = json_result["rows"][0]["doc"]
-        dealers_dict = dealers.copy()            
-    return dealers_dict
+        dealers_dict = json_result["rows"][0]["doc"]
+     #   dealers_dict = dealers.copy()  
+        dealers_list = dealers_dict["dealerships"]
+        dealers_dict2["key0"] = dealers_list[0]
+        dealers_dict2["key1"] = dealers_list[1]
+        dealers_dict2["key2"] = dealers_list[2]        
+    return dealers_dict2
+
+    
 
 
 

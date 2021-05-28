@@ -59,14 +59,22 @@
             </tr>
         </thead>
         <tbody>
-            {% for dealer in dealers_dict.dealerships %}
+        <!--
+            {% for key, value in my_dictionay.items %}
+                <li>{{ key }} : {{ value }}</li>
+            {% endfor %}
+        -->                
+            {% for key, value in dealers_dict3.items %}
             <tr>
-                <td>{{dealer.id}}</td>
-                <td>{{dealer.full_name}}</td>
-                <td>{{dealer.city}}</td>
-                <td>{{dealer.address}}</td>
-                <td>{{dealer.zip}}</td>
-                <td>{{dealer.state}}</td>
+                <td>{{value.id}}</td>
+    <!--            
+                <td>{{value.id}}</td>
+                <td>{{value.full_name}}</td>
+                <td>{{value.city}}</td>
+                <td>{{value.address}}</td>
+                <td>{{value.zip}}</td>
+                <td>{{value.state}}</td>
+    -->            
             </tr>
             {% endfor %}
         </tbody>

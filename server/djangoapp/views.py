@@ -115,8 +115,8 @@ def get_dealerships2(request):
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/dealerships/get-dealerships-seq"
         # Get dealers from the URL
-        dealers_dict = get_dealers_from_cf2(url)        
-        context = dealers_dict
+        dealers_dict3 = get_dealers_from_cf2(url)        
+        context = dealers_dict3
         # Concat all dealer's short name
     #    dealer_names = ',   '.join([dealer.short_name for dealer in dealerships])
         # Return a list of dealer short name
