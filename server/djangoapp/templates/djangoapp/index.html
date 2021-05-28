@@ -46,6 +46,13 @@
             </ul>
         </div>
     </nav>   
+    
+    <div> "THIS IS NOT WORKING : DATA NOT COMING HERE"
+        {% for key, value in dealers_dict3.items %}
+        <li>{{ key }} : {{ value }}</li>
+        {% endfor %}
+    </div>
+    
     <!--Add a dealer table here -->
     <table class='table' id='table'>
         <thead>
@@ -79,6 +86,8 @@
             {% endfor %}
         </tbody>
     </table>
+
+
 </body>
 
 </html>
