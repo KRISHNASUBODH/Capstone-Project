@@ -95,16 +95,34 @@ def registration_request(request):
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
-    context ={}
+    
     if request.method == "GET":        
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/dealerships/get-dealerships-seq"
         # Get dealers from the URL
         dealerships = get_dealers_from_cf(url)
-        context.append(dealerships)
-        dealership_list = context
+        
         # Concat all dealer's short name
         dealer_names = ',   '.join([dealer.short_name for dealer in dealerships])
+        # Return a list of dealer short name
+        return HttpResponse(dealer_names)
+        
+
+
+
+
+def get_dealerships2(request):
+    context = {}
+    dealership_list = []
+    if request.method == "GET":        
+    #    url = "your-cloud-function-domain/dealerships/dealer-get"
+        url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/dealerships/get-dealerships-seq"
+        # Get dealers from the URL
+        dealerships = get_dealers_from_cf(url)
+        dealership_list.append(dealerships)
+        context["dealership_list"] = dealership_list
+        # Concat all dealer's short name
+    #    dealer_names = ',   '.join([dealer.short_name for dealer in dealerships])
         # Return a list of dealer short name
         # return HttpResponse(dealer_names)
         return render(request, 'djangoapp/index.html', context)
