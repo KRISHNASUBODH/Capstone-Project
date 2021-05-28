@@ -117,7 +117,7 @@ def get_dealers_from_cf2(url, **kwargs):
         # Get the row list in JSON as dealers
      #   dealers = json_result["rows"][0]["doc"]["dealerships"]
         dealers = json_result["rows"][0]["doc"]
-        dealers_dict = dealers            
+        dealers_dict = dealers.copy()            
     return dealers_dict
 
 
