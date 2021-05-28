@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .models import CarMake, CarModel
 from .restapis import get_request_dealers, get_request_reviews, get_request_sentiments, post_request
 from .restapis import get_dealers_from_cf, get_dealer_by_id_from_cf, get_dealer_by_state_from_cf, get_dealer_reviews_from_cf 
+from .restapis import get_dealers_from_cf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -107,10 +108,6 @@ def get_dealerships(request):
         # Return a list of dealer short name
         return HttpResponse(dealer_names)
         
-
-
-
-
 def get_dealerships2(request):
     context = {}
     dealership_list = []

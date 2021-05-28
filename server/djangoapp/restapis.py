@@ -108,6 +108,21 @@ def get_dealers_from_cf(url, **kwargs):
     
     return results
 
+# method to get dealers in tabular form
+def get_dealers_from_cf2(url, **kwargs):
+    dealers_dict = {}
+    # Call get_request with a URL parameter
+    json_result = get_request_dealers(url)   
+    if json_result:
+        # Get the row list in JSON as dealers
+     #   dealers = json_result["rows"][0]["doc"]["dealerships"]
+        dealers = json_result["rows"][0]["doc"]
+        dealers_dict = dealers            
+    return results
+
+
+
+
 # def get_dealer_by_id_from_cf(url, dealerId):
 # - Call get_request() with specified arguments
 # - Parse JSON results into a DealerView object list
