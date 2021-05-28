@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .models import CarMake, CarModel
 from .restapis import get_request_dealers, get_request_reviews, get_request_sentiments, post_request
 from .restapis import get_dealers_from_cf, get_dealer_by_id_from_cf, get_dealer_by_state_from_cf, get_dealer_reviews_from_cf 
-from .restapis import get_dealers_from_cf
+from .restapis import get_dealers_from_cf2
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -95,8 +95,7 @@ def registration_request(request):
             return render(request, 'djangoapp/registration.html', context)
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
-def get_dealerships(request):
-    
+def get_dealerships(request):    
     if request.method == "GET":        
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/dealerships/get-dealerships-seq"
@@ -107,7 +106,8 @@ def get_dealerships(request):
         dealer_names = ',   '.join([dealer.short_name for dealer in dealerships])
         # Return a list of dealer short name
         return HttpResponse(dealer_names)
-        
+
+# for dealers in tabular form        
 def get_dealerships2(request):
     context = {}
     dealership_list = []
@@ -115,9 +115,8 @@ def get_dealerships2(request):
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/dealerships/get-dealerships-seq"
         # Get dealers from the URL
-        dealerships = get_dealers_from_cf(url)
-        dealership_list.append(dealerships)
-        context["dealership_list"] = dealership_list
+        dealers_dict = get_dealers_from_cf2(url)        
+        context = dealers_dict
         # Concat all dealer's short name
     #    dealer_names = ',   '.join([dealer.short_name for dealer in dealerships])
         # Return a list of dealer short name

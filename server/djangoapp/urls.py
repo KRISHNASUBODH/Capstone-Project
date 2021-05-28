@@ -23,9 +23,13 @@ urlpatterns = [
 
     # path for logout
     path('logout/', views.logout_request, name='logout'),
+    
     # path for dealerships
     path(route='', view=views.get_dealerships, name='index'),
   
+    # path for dealerships in tabular form
+    path(route='dealertable/', view=views.get_dealerships2, name='dealertable'),
+    
     # path for all-dealers reviews view - working ok
     #path(route='dealer_reviews/', view=views.get_dealer_details, name='dealer_reviews'),
     
