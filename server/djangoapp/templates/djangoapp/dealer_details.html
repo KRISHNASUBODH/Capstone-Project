@@ -44,7 +44,31 @@
     </nav>
     
     <!-- Add reviews as cards -->
+    <!--
+    Add a <div class="card-columns"> element to organize review cards.
+    For each review in reviews list, create a <div class="card"> 
+    with the following child elements:
+    A <img class="card-img-left"> to visualize the sentiment using 
+    three provided emoji images in static/media/emoji folder. 
+    For example, if the review sentiment is positive, 
+    set the src="{{MEDIA_URL}}/emoji/positive.png"
+    -->
+    <div class="card-columns">
+        {% for review in reviews_list %}
+        <div class="card">
+            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png">
+        </div>
+        {% endfor %}
+    </div>
+    <!--A <div class="card-body"> with several card-title text labels 
+        to show the car model name, make, and purchase year. 
+        In addition, add another card-text to show review content
+    -->
+    <div class="card-body">
 
-    </body>
+    </div>
+    
+    
+</body>
 
 </html>

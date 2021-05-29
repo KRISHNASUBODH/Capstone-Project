@@ -153,7 +153,7 @@ def get_dealer_details2(request, dealer_id):
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-get/get-reviews-seq"
         # Get dealers from the URL (List of dict objects)
         reviews_dict_list  = get_dealer_reviews_from_cf2(url, dealer_id)
-        context["reviews"] = reviews_dict_list
+        context["reviews_list"] = reviews_dict_list
     return render(request, 'djangoapp/dealer_details.html', context)
     
 
