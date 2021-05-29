@@ -209,9 +209,10 @@ def get_dealer_reviews_from_cf(url, dealer_id):
     json_result = get_request_reviews(url, dealerId=dealer_id) 
    # json_result = get_request(dealer_id)   
     if json_result:
-        # Get the row list in JSON as dealers
+        # Get the row list in JSON as dealers (List of dict objects)
         reviews_details = json_result["rows"][0]["doc"]["reviews"]
-        # For each dealer object
+    # ------------------------------------------------------------- #    
+        # For each dealer object : for collecting data as plain python object
         for reviewed in reviews_details:
             # Get its content in `doc` object           
         #    dealer_doc = dealer["doc"]            
@@ -226,7 +227,45 @@ def get_dealer_reviews_from_cf(url, dealer_id):
                 )
             # Adding sentiment - NOT WORKING - may BYPASS
             #    review_obj.sentiment = analyze_review_sentiments(review_obj.review)    
-                results.append(review_obj)
+                results.append(review_obj)    
+    
+    return results
+
+
+# To get all reviews of a specific dealer (as per dealer_id)
+def get_dealer_reviews_from_cf2(url, dealer_id):
+#def get_dealer_reviews_from_cf(url, **kwargs):
+    results = []
+#    dealer_id = 1  -- use above method with dealer_by_id
+    # Call get_request with a URL parameter
+#    json_result = get_request(url)
+    json_result = get_request_reviews(url, dealerId=dealer_id) 
+   # json_result = get_request(dealer_id)   
+    if json_result:
+        # Get the row list in JSON as dealers (List of dict objects)
+        reviews_details = json_result["rows"][0]["doc"]["reviews"]
+        # reviews_details is itself a List, so the line below is not required
+        reviews_details_list = results.append(reviews_details)        
+    # return reviews_details_list (also ok)
+    # return reviews_details (also ok)
+    return results
+    # ------------------------------------------------------------- #    
+        # For each dealer object : for collecting data as plain python object
+        for reviewed in reviews_details:
+            # Get its content in `doc` object           
+        #    dealer_doc = dealer["doc"]            
+            if reviewed["id"] == dealer_id:           
+                review_obj = DealerReview( dealership=reviewed["dealership"], name=reviewed["name"],
+                    purchase=reviewed["purchase"], review=reviewed["review"], 
+                    purchase_date=reviewed["purchase_date"], car_make=reviewed["car_make"], 
+                    car_model=reviewed["car_model"], car_year=reviewed["car_year"],
+                # sentiment="" is ok, giving review for any one dealer
+                    sentiment="", 
+                    id=reviewed["id"] 
+                )
+            # Adding sentiment - NOT WORKING - may BYPASS
+            #    review_obj.sentiment = analyze_review_sentiments(review_obj.review)    
+                results.append(review_obj)    
     
     return results
 
