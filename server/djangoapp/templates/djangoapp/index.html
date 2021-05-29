@@ -45,20 +45,25 @@
                 {% endif %}
             </ul>
         </div>
-    </nav>   
+    </nav> 
+    <!--  
     <div>"THIS IS NOW WORKING : DATA is COMING HERE"</div>
     <div>
         {% for dealer in dealers_dict_list %}
         <p> {{dealer.city}} </p>
         {% endfor %}
     </div>
+    -->
+    <!--
     <div> 
         {% for data in dataset %}  
            <p> {{ data.title1 }}</p>
-    <!--       <p> {{ dataset.title2 }}</p>   -->
+           <p> {{ dataset.title2 }}</p>   
         {% endfor %}    
     </div>
-    
+    -->
+
+
     <!--Add a dealer table here -->
     <table class='table' id='table'>
         <thead>
@@ -77,17 +82,14 @@
                 <li>{{ key }} : {{ value }}</li>
             {% endfor %}
         -->                
-            {% for key, value in dealers_dict3.items %}
-            <tr>
-                <td>{{value.id}}</td>
-    <!--            
-                <td>{{value.id}}</td>
-                <td>{{value.full_name}}</td>
-                <td>{{value.city}}</td>
-                <td>{{value.address}}</td>
-                <td>{{value.zip}}</td>
-                <td>{{value.state}}</td>
-    -->            
+            {% for dealer in dealers_dict_list %}
+            <tr>                        
+                <td>{{dealer.id}}</td>
+                <td>{{dealer.full_name}}</td>
+                <td>{{dealer.city}}</td>
+                <td>{{dealer.address}}</td>
+                <td>{{dealer.zip}}</td>
+                <td>{{dealer.state}}</td>               
             </tr>
             {% endfor %}
         </tbody>
