@@ -180,7 +180,9 @@ def add_review(request, dealer_id):
             url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-save/save-review-seq"
             json_payload["review"] = review
             result = post_request(url, json_payload, dealerId=dealer_id)
-            return HttpResponse(result)
+    
+    # return HttpResponse(result)
+    return redirect("djangoapp:dealer_details", dealer_id=dealer_id)
 
 
 
