@@ -115,11 +115,12 @@ def get_dealerships2(request):
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/dealerships/get-dealerships-seq"
         # Get dealers from the URL
-        dealers_dict3 = get_dealers_from_cf2(url)        
+        dealers_list = get_dealers_from_cf2(url) 
+        context["dealers_dict_list"] = dealers_list    
     #    context = dealers_dict3
-        # Trial for creating and sending data through context
-        data_dict = [{'title1':'python', 'title2':'django'}, {'title1':'java', 'title2':'js'}]
-        context["dataset"] = data_dict
+        # SUCCESSFUL : 2-LINES BELOW - Trial for creating and sending data through context
+        # data_dict = [{'title1':'python', 'title2':'django'}, {'title1':'java', 'title2':'js'}]
+        # context["dataset"] = data_dict
 
         # Concat all dealer's short name
     #    dealer_names = ',   '.join([dealer.short_name for dealer in dealerships])

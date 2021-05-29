@@ -46,7 +46,12 @@
             </ul>
         </div>
     </nav>   
-    <div>"THIS IS NOT WORKING : DATA NOT COMING HERE"</div>
+    <div>"THIS IS NOW WORKING : DATA is COMING HERE"</div>
+    <div>
+        {% for dealer in dealers_dict_list %}
+        <p> {{dealer.city}} </p>
+        {% endfor %}
+    </div>
     <div> 
         {% for data in dataset %}  
            <p> {{ data.title1 }}</p>
