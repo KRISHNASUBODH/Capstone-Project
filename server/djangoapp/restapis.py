@@ -249,26 +249,7 @@ def get_dealer_reviews_from_cf2(url, dealer_id):
     # return reviews_details_list (also ok)
     # return reviews_details (also ok)
     return results
-    # ------------------------------------------------------------- #    
-        # For each dealer object : for collecting data as plain python object
-        for reviewed in reviews_details:
-            # Get its content in `doc` object           
-        #    dealer_doc = dealer["doc"]            
-            if reviewed["id"] == dealer_id:           
-                review_obj = DealerReview( dealership=reviewed["dealership"], name=reviewed["name"],
-                    purchase=reviewed["purchase"], review=reviewed["review"], 
-                    purchase_date=reviewed["purchase_date"], car_make=reviewed["car_make"], 
-                    car_model=reviewed["car_model"], car_year=reviewed["car_year"],
-                # sentiment="" is ok, giving review for any one dealer
-                    sentiment="", 
-                    id=reviewed["id"] 
-                )
-            # Adding sentiment - NOT WORKING - may BYPASS
-            #    review_obj.sentiment = analyze_review_sentiments(review_obj.review)    
-                results.append(review_obj)    
     
-    return results
-
 
 
 
