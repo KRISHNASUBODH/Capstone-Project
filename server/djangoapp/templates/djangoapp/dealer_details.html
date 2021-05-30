@@ -56,12 +56,12 @@
     <div class="card-columns">
         {% for review in reviews_list %}
         <div class="card">
-            {% if (dealer_id % 2) == 0 %}
+    <!--        {% if (dealer_id > 25) %}  -->
             <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png" alt="Positive review">
-            {% endif %}
-            {% if (dealer_id % 2) != 0 %}
+    <!--        {% endif %}  -->
+    <!--        {% if (dealer_id > 0) %}  -->
             <img class="card-img-left" src="{{MEDIA_URL}}/emoji/negative.png" alt="Negative review">
-            {% endif %}
+    <!--        {% endif %}  -->
         </div>
         {% endfor %}
     </div>

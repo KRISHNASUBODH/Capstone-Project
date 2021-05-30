@@ -24,7 +24,7 @@ urlpatterns = [
     # path for logout
     path('logout/', views.logout_request, name='logout'),
     
-    # path for dealerships
+    # path for dealerships not as a table
     path(route='', view=views.get_dealerships, name='index'),
   
     # path for dealerships in tabular form
@@ -35,6 +35,9 @@ urlpatterns = [
     
     # path for a selected (id) dealer review view
     path('dealer/<int:dealer_id>/', views.get_dealer_details, name='dealer_details'),
+
+    # path for a selected (id) dealer review view - displayed as bootstrap cards
+    path('dealer2/<int:dealer_id>/', views.get_dealer_details2, name='dealer_details2'),
 
     # path for add a review view
     path('dealer/<int:dealer_id>/', views.add_review, name='add_review'),
