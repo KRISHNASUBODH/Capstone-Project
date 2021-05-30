@@ -54,24 +54,18 @@
     set the src="{{MEDIA_URL}}/emoji/positive.png"
     -->
     <div class="card-columns">
-        {% for review in reviews_list %}
+        {% for rev_obj in reviews_list %}
         
         <div class="card">            
             <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png" alt="Positive review">        
         </div>
-        
-    <!--A <div class="card-body"> with several card-title text labels 
-        to show the car model name, make, and purchase year. 
-        In addition, add another card-text to show review content
-    -->
+        <br>
+    
     <div class="card-body">
-        <h5 class="card-title">Car Model</h5>
-        <h5 class="card-title">Car Make</h5>
-        <h5 class="card-title">Car Purchase Year</h5>
-        
-        <p class="card-text">Review Content</p>
-        <p>{{review}}</p>
-        <a href="#" class="btn btn-primary">Looking awful</a>       
+        <h5 class="card-title">Car Model : {{rev_obj.car_model}} </h5>
+        <h5 class="card-title">Car Make : {{rev_obj.car_make}} </h5>
+        <h5 class="card-title">Car Purchase Date : {{rev_obj.purchase_date}} </h5>    
+        <p class="card-text">Review : <b>{{rev_obj.review}}</b> </p>    
     </div>
     {% endfor %}
     </div>     
