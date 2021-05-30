@@ -244,11 +244,18 @@ def get_dealer_reviews_from_cf2(url, dealer_id):
     if json_result:
         # Get the row list in JSON as dealers (List of dict objects)
         reviews_details = json_result["rows"][0]["doc"]["reviews"]
-        reviews_dict_list = reviews_details
+    #    reviews_dict_list = reviews_details
+
         for reviewed in reviews_details:
-            if reviewed["id"] == dealer_id:               
-                dealer_review = reviewed["review"]
-                results.append(dealer_review)
+            if reviewed["id"] == dealer_id: 
+                dealer_review_details = reviews_details[dealer_id - 1]              
+            #    dealer_review = reviewed["review"]
+                results.append(dealer_review_details)
+
+    #    for reviewed in reviews_details:
+    #        if reviewed["id"] == dealer_id:               
+    #            dealer_review = reviewed["review"]
+    #            results.append(dealer_review)
 
     return results    
     #    dealer_review_list2 = [dealer_id, dealer_review_list]
