@@ -152,10 +152,13 @@ def get_dealer_details2(request, dealer_id):
     #    url = "your-cloud-function-domain/dealerships/dealer-get"
         url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-get/get-reviews-seq"
         # Get dealers from the URL (List of dict objects)
-        reviews_dict_list  = get_dealer_reviews_from_cf2(url, dealer_id)
-        context["reviews_list"] = reviews_dict_list
-    return render(request, 'djangoapp/dealer_details.html', context)
-    
+        # This list of reviews has dealer_id as the first item
+        dealer_review_list  = get_dealer_reviews_from_cf2(url, dealer_id)
+        context["reviews_list"] = dealer_review_list
+    if dealer_id % 2 == 0:
+        return render(request, 'djangoapp/dealer_details.html', context)
+    else:
+        return render(request, 'djangoapp/dealer_details2.html', context)
 
 
 # Create a `add_review` view to submit a review
