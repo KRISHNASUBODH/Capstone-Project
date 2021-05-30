@@ -56,7 +56,12 @@
     <div class="card-columns">
         {% for review in reviews_list %}
         <div class="card">
-            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png">
+            {% if (dealer_id % 2) == 0 %}
+            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png" alt="Positive review">
+            {% endif %}
+            {% if (dealer_id % 2) != 0 %}
+            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/negative.png" alt="Negative review">
+            {% endif %}
         </div>
         {% endfor %}
     </div>
@@ -65,10 +70,13 @@
         In addition, add another card-text to show review content
     -->
     <div class="card-body">
-
+        <h5 class="card-title">Card Model</h5>
+        <h5 class="card-title">Card Make</h5>
+        <h5 class="card-title">Card Purchase Year</h5>
+        <p class="card-text">Review Content</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
-    
-    
+        
 </body>
 
 </html>
