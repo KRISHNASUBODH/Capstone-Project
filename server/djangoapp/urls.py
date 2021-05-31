@@ -40,6 +40,6 @@ urlpatterns = [
     path('dealer2/<int:dealer_id>/', views.get_dealer_details2, name='dealer_details2'),
 
     # path for add a review view
-    path('dealer3/<int:dealer_id>/', views.add_review, name='add_review'),
+    path('dealer3/<int:dealer_id>/', views.add_review, name='add_review')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
