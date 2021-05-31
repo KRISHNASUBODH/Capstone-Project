@@ -182,12 +182,26 @@ def add_review(request, dealer_id):
         review["time"] = datetime.utcnow().isoformat()
         
         if request.method == "POST":
+            id = request.POST['id']
+            name = request.POST['name']
+            dealership = request.POST['dealership']
+            review = request.POST['review']
+            purchase = request.POST['purchase']
+            another = request.POST['another']
+            purchase_date = request.POST['purchase_date']
+            car_make = request.POST['car_make']
+            car_model = request.POST['car_model']
+            car_year = request.POST['car_year']
+            time = datetime.utcnow().isoformat()
+        #    time = request.POST['id']
+            
+
             url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-save/save-review-seq"
             json_payload["review"] = review
             result = post_request(url, json_payload, dealerId=dealer_id)
     
     # return HttpResponse(result)
-    return redirect("djangoapp:dealer_details", dealer_id=dealer_id)
+    return redirect("djangoapp:dealer_details2", dealer_id=dealer_id)
 
 
 
