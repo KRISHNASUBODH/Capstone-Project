@@ -88,10 +88,11 @@ def registration_request(request):
             # Create user in auth_user table
             user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,
                                             password=password)
-            # Login the user and redirect to course list page
+            # Login the user and redirect to dealer list page (Home page)
             login(request, user)
-            return redirect("djangoapp:registration")
+            return redirect("djangoapp:index")
         else:
+            context['message'] = "User already exists."
             return render(request, 'djangoapp/registration.html', context)
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
