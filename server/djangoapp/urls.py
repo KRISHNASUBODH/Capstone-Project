@@ -25,11 +25,11 @@ urlpatterns = [
     path('logout/', views.logout_request, name='logout'),
     
     # path for dealerships not as a table
-    path(route='', view=views.get_dealerships, name='index'),
+ #   path(route='', view=views.get_dealerships, name='index'),
   
-    # path for dealerships in tabular form
-    path(route='dealertable/', view=views.get_dealerships2, name='dealertable'),
-    
+    # path for dealerships in tabular form - later converted to index page in 2nd line
+ #   path(route='dealertable/', view=views.get_dealerships2, name='dealertable'),
+    path(route='', view=views.get_dealerships2, name='index'),
     # path for all-dealers reviews view - working ok
     #path(route='dealer_reviews/', view=views.get_dealer_details, name='dealer_reviews'),
     

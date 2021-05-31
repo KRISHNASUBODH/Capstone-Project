@@ -38,17 +38,18 @@ def login_request(request):
         # Get username and password from request.POST dictionary
         username = request.POST['username']
         password = request.POST['psw']
-        # Try to check if provide credential can be authenticated
+        # Try to check if provided credentials can be authenticated
         user = authenticate(username=username, password=password)
         if user is not None:
             # If user is valid, call login method to login current user
             login(request, user)
-            return redirect('djangoapp:about')
+            return redirect('djangoapp:index')
         else:
             # If not, return to login page again
-            return render(request, 'djangoapp/index.html', context)
+            context['message'] = "Invalid username or password."
+            return render(request, 'djangoapp/login.html', context)
     else:
-        return render(request, 'djangoapp/index.html', context)
+        return render(request, 'djangoapp/login.html', context)
 
 
 
