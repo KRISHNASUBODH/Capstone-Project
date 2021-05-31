@@ -16,7 +16,8 @@ class CarModelAdmin(admin.ModelAdmin):
 # CarMakeAdmin class with CarModelInline
 class CarMakeAdmin(admin.ModelAdmin):
     inlines = [CarModelInline]
-    list_display = ['make_name']
+    list_display = ['make_name', 'make_description']
+    list_filter = ['id_make']
     search_fields = ['make_name']
 
 # Register models here
