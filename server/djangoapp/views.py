@@ -167,35 +167,29 @@ def get_dealer_details2(request, dealer_id):
 def add_review(request, dealer_id):
     # First check if user is authenticated because only authenticated users can post reviews for a dealer.
     if request.user.is_authenticated:
+        review = {} 
+        context = {}       
         
-        review = {}
-        review['id'] = 5
-        review['name'] = 'Ram Sahare'
-        review['dealership'] = 11
-        review['review'] = "This is a great car dealer"
-        review['purchase'] = "yes"
-        review['another'] = "field"
-        review['purchase_date'] = '2018-05-05'
-        review['car_make'] = 'Rolls Royce'
-        review['car_model'] = 'Beauty'
-        review['car_year'] = '2018'
-        review["time"] = datetime.utcnow().isoformat()
+        if request.method == "GET":
+
+            return render(request, 'djangoapp/add_review.html', context)
+
+        
         
         if request.method == "POST":
-            id = request.POST['id']
-            name = request.POST['name']
-            dealership = request.POST['dealership']
-            review = request.POST['review']
-            purchase = request.POST['purchase']
-            another = request.POST['another']
-            purchase_date = request.POST['purchase_date']
-            car_make = request.POST['car_make']
-            car_model = request.POST['car_model']
-            car_year = request.POST['car_year']
-            time = datetime.utcnow().isoformat()
+            review['id'] = request.POST['id']
+            review['name'] = request.POST['name']
+            review['dealership'] = request.POST['dealership']
+            review['review'] = request.POST['review']
+            review['purchase'] = request.POST['purchase']
+            review['another'] = request.POST['another']
+            review['purchase_date'] = request.POST['purchase_date']
+            review['car_make'] = request.POST['car_make']
+            review['car_model'] = request.POST['car_model']
+            review['car_year'] = request.POST['car_year']
+            review["time"] = datetime.utcnow().isoformat()
         #    time = request.POST['id']
             
-
             url = "https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/82537bc72633db84be982fd56a9a90b1879ec76dd6a0550dd12d8e3ec73e3cca/review-save/save-review-seq"
             json_payload["review"] = review
             result = post_request(url, json_payload, dealerId=dealer_id)

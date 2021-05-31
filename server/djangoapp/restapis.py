@@ -70,9 +70,6 @@ def post_request(url, json_payload, **kwargs):
     print("With status {} ".format(status_code))
     
 
-
-
-
 # Create a get_dealers_from_cf method to get dealers from a cloud function
 # def get_dealers_from_cf(url, **kwargs):
 # - Call get_request() with specified arguments
@@ -126,10 +123,6 @@ def get_dealers_from_cf2(url, **kwargs):
     #    dealers_dict2["key2"] = dealers_list[2]    
     #     
     return dealers_list
-
-    
-
-
 
 
 # def get_dealer_by_id_from_cf(url, dealerId):
@@ -265,10 +258,8 @@ def get_dealer_reviews_from_cf2(url, dealer_id):
     # return reviews_details_list (also ok)
     # return reviews_details (also ok)
  #   return results
-    
-    
 
-
+    
 
 # Create an `analyze_review_sentiments` method to call Watson NLU and analyze text
 # - Call get_request() with specified arguments
